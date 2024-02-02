@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, NgForm } from '@angular/forms';
+import { clearScreenDown } from 'readline';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   template: `
     <!-- Contact Section -->
     <section class="page-section" id="contact">
@@ -20,7 +22,7 @@ import { CommonModule } from '@angular/common';
           </div>
         </div>
         <div class="row justify-content-center">
-          <form>
+          <form #contactForm="ngForm" (ngSubmit)="handleSubmit(contactForm)">
             <div class="form-row">
               <div class="col-md-4 mb-3">
                 <label for="validationDefault01">First name</label>
@@ -30,6 +32,8 @@ import { CommonModule } from '@angular/common';
                   name="firstname"
                   id="validationDefault01"
                   required
+                  [value]=""
+                  ngModel
                 />
               </div>
               <div class="col-md-4 mb-3">
@@ -40,6 +44,8 @@ import { CommonModule } from '@angular/common';
                   name="lastname"
                   id="validationDefault02"
                   required
+                  [value]=""
+                  ngModel
                 />
               </div>
               <div class="col-md-4 mb-3">
@@ -50,6 +56,8 @@ import { CommonModule } from '@angular/common';
                   name="phone"
                   id="validationDefault03"
                   required
+                  [value]=""
+                  ngModel
                 />
               </div>
             </div>
@@ -61,6 +69,8 @@ import { CommonModule } from '@angular/common';
                 id="messageFormControlTextarea1"
                 rows="3"
                 required
+                [value]=""
+                ngModel
               ></textarea>
             </div>
             <button class="btn btn-primary btn-block" type="submit">
@@ -73,4 +83,9 @@ import { CommonModule } from '@angular/common';
   `,
   styleUrl: './contact.component.css',
 })
-export class ContactComponent {}
+export class ContactComponent {
+  handleSubmit(contactForm: NgForm) {
+    console.log(contactForm.value);
+    console.log(contactForm.value.message);
+  }
+}
