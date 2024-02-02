@@ -42,16 +42,36 @@ import { RouterModule } from '@angular/router';
                     >
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" routerLink="projects">Projects</a>
+                    <a
+                      class="nav-link"
+                      routerLink="projects"
+                      routerLinkActive="active"
+                      >Projects</a
+                    >
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" routerLink="services">Services</a>
+                    <a
+                      class="nav-link"
+                      routerLink="services"
+                      routerLinkActive="active"
+                      >Services</a
+                    >
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" routerLink="about">About</a>
+                    <a
+                      class="nav-link"
+                      routerLink="about"
+                      routerLinkActive="active"
+                      >About</a
+                    >
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" routerLink="contact">Contact</a>
+                    <a
+                      class="nav-link"
+                      routerLink="contact"
+                      routerLinkActive="active"
+                      >Contact</a
+                    >
                   </li>
                 </ul>
               </div>
