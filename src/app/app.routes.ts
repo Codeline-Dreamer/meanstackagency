@@ -10,6 +10,7 @@ import { Home1Component } from './home1/home1.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProvidersComponent } from './providers/providers.component';
+import { AddProvidersComponent } from './providers/add-providers/add-providers.component';
 
 export const routes: Routes = [
   { path: 'header', component: HeaderComponent },
@@ -22,5 +23,6 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'providers', component: ProvidersComponent },
+  { path: 'providers/add-provider', component: AddProvidersComponent },
   { path: '**', component: NotfoundComponent },
 ];

@@ -13,6 +13,7 @@ import { Home1Component } from './home1/home1.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProvidersComponent } from './providers/providers.component';
+import { AddProvidersComponent } from './providers/add-providers/add-providers.component';
 
 @Component({
   selector: 'app-root',
@@ -27,6 +28,7 @@ import { ProvidersComponent } from './providers/providers.component';
     LoginComponent,
     RegisterComponent,
     ProvidersComponent,
+    AddProvidersComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
