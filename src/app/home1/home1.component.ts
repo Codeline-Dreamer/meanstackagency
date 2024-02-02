@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-home1',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, AppComponent],
   template: `
     <!-- Masthead -->
     <header class="masthead">
@@ -15,7 +16,7 @@ import { RouterModule } from '@angular/router';
         >
           <div class="col-lg-10 align-self-end">
             <h1 class="text-uppercase text-white font-weight-bold">
-              Full Stack Web Development
+              MEAN Stack Ageny
             </h1>
             <hr class="divider my-4" />
           </div>
