@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProvidersComponent } from '../providers.component';
 import { FormGroup, FormControl } from '@angular/forms';
 import { providers } from '../../models/providers.data.';
@@ -43,49 +43,131 @@ import { FormsModule, NgForm } from '@angular/forms';
               >
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <label for="inputFirstName">First Name</label>
+                    <label for="inputFirstName"
+                      >First Name
+                      <!-- Required Indicator -->
+                      <span
+                        *ngIf="providersForm.controls['firstname'].touched && providersForm.controls['firstname'].errors?.['required']"
+                        class="text-danger"
+                      >
+                        *Required
+                      </span>
+                    </label>
                     <input
                       type="text"
                       class="form-control form-control-user"
                       formControlName="firstname"
+                      id="inputFirstName"
                     />
+                    <!-- Validation Feedback for Min Length -->
+                    <div
+                      *ngIf="providersForm.controls['firstname'].touched && providersForm.controls['firstname'].errors?.['minlength']"
+                      class="text-danger"
+                    >
+                      Minimum 2 characters
+                    </div>
                   </div>
+
                   <div class="col-sm-6">
-                    <label for="inputLastName">Last Name</label>
+                    <label for="inputLastName"
+                      >Last Name
+                      <!-- Required Indicator -->
+                      <span
+                        *ngIf="providersForm.controls['lastname'].touched && providersForm.controls['lastname'].errors?.['required']"
+                        class="text-danger"
+                      >
+                        *Required
+                      </span>
+                    </label>
                     <input
                       type="text"
                       class="form-control form-control-user"
                       formControlName="lastname"
                     />
+                    <!-- Validation Feedback for Min Length -->
+                    <div
+                      *ngIf="providersForm.controls['lastname'].touched && providersForm.controls['lastname'].errors?.['minlength']"
+                      class="text-danger"
+                    >
+                      Minimum 2 characters
+                    </div>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputPosition">Position</label>
+                  <label for="inputPosition"
+                    >Position
+                    <!-- Required Indicator -->
+                    <span
+                      *ngIf="providersForm.controls['position'].touched && providersForm.controls['position'].errors?.['required']"
+                      class="text-danger"
+                    >
+                      *Required
+                    </span>
+                  </label>
                   <input
                     type="text"
                     class="form-control form-control-user"
                     formControlName="position"
                   />
+                  <!-- Validation Feedback for Min Length -->
+                  <div
+                    *ngIf="providersForm.controls['position'].touched && providersForm.controls['position'].errors?.['minlength']"
+                    class="text-danger"
+                  >
+                    Minimum 2 characters
+                  </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <label for="inputEmail">Email</label>
+                    <label for="inputEmail"
+                      >Email
+                      <!-- Required Indicator -->
+                      <span
+                        *ngIf="providersForm.controls['email'].touched && providersForm.controls['email'].errors?.['required']"
+                        class="text-danger"
+                      >
+                        *Required
+                      </span></label
+                    >
                     <input
                       type="email"
                       class="form-control form-control-user"
                       formControlName="email"
                     />
+                    <!-- Validation Feedback for Min Length -->
+                    <div
+                      *ngIf="providersForm.controls['email'].touched && providersForm.controls['email'].errors?.['email']"
+                      class="text-danger"
+                    >
+                      Please enter a valid email.
+                    </div>
                   </div>
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <label for="inputPhone">Phone</label>
+                    <label for="inputPhone"
+                      >Phone
+                      <!-- Required Indicator -->
+                      <span
+                        *ngIf="providersForm.controls['phone'].touched && providersForm.controls['phone'].errors?.['required']"
+                        class="text-danger"
+                      >
+                        *Required
+                      </span></label
+                    >
                     <input
                       type="phone"
                       class="form-control form-control-user"
                       formControlName="phone"
                     />
+                    <!-- Validation Feedback for Min Length -->
+                    <div
+                      *ngIf="providersForm.controls['phone'].touched && providersForm.controls['phone'].errors?.['pattern']"
+                      class="text-danger"
+                    >
+                      Please enter a valid phone number (e.g., 555-123-4567).
+                    </div>
                   </div>
                 </div>
-
+                <hr class="divider my-4" />
                 <div class="form-group">
                   <label for="inputCompanyName">Company</label>
                   <input
@@ -174,11 +256,23 @@ export class AddProvidersComponent implements OnInit {
 
   ngOnInit(): void {
     this.providersForm = new FormGroup({
-      firstname: new FormControl('Jatinder'),
-      lastname: new FormControl('Singh'),
-      position: new FormControl(),
-      email: new FormControl(),
-      phone: new FormControl(),
+      firstname: new FormControl('Jatinder', [
+        Validators.required,
+        Validators.minLength(2),
+      ]),
+      lastname: new FormControl('Singh', [
+        Validators.required,
+        Validators.minLength(2),
+      ]),
+      position: new FormControl('', [
+        Validators.required,
+        Validators.minLength(2),
+      ]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      phone: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^[2-9]{3}-[0-9]{3}-[0-9]{4}$'),
+      ]),
       company_name: new FormControl(),
       address: new FormControl(),
       address2: new FormControl(),
