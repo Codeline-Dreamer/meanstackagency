@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProvidersComponent } from './providers/providers.component';
 import { AddProvidersComponent } from './providers/add-providers/add-providers.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -29,6 +30,7 @@ import { AddProvidersComponent } from './providers/add-providers/add-providers.c
     RegisterComponent,
     ProvidersComponent,
     AddProvidersComponent,
+    HttpClientModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

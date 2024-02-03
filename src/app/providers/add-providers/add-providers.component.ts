@@ -235,7 +235,11 @@ import { FormsModule, NgForm } from '@angular/forms';
                     ></textarea>
                   </div>
                 </div>
-                <button class="btn btn-primary btn-lg btn-block" type="submit">
+                <button
+                  class="btn btn-primary btn-lg btn-block"
+                  type="submit"
+                  [disabled]="providersForm.invalid"
+                >
                   Add Provider
                 </button>
               </form>
